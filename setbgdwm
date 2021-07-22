@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Wait i am choosing the random wallpaper"
+wall=$(find ~/wallpaper -type f | shuf -n 1)
+feh --bg-fill $wall
+wal -i $wall >/dev/null
+echo "Generating your beautiful olour schemes"
+sed -i 'N;$!P;D' ~/.cache/wal/colors-wal-dwm.h
+echo 'Recompiling dwm with new colors bitch .....'
+(cd ~/dwm && sudo make clean install>/dev/null)
+echo "Finished please restart"
+
